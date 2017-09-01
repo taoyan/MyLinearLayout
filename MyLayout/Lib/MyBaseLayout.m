@@ -237,7 +237,7 @@ CGFloat _myMLayoutSizeError = 0.0;
 {
     return self.myCurrentSizeClass.myHeight;
 }
-
+ 
 -(void)setMyHeight:(CGFloat)myHeight
 {
     self.myCurrentSizeClass.myHeight = myHeight;
@@ -1736,6 +1736,13 @@ CGFloat _myMLayoutSizeError = 0.0;
     
 }
 
+- (void)didMoveToWindow
+{
+    if (_touchEventDelegate != nil) {
+        [_touchEventDelegate recoverNormalAppearance];
+    }
+    [super didMoveToWindow];
+}
 
 -(void)awakeFromNib
 {
@@ -3192,6 +3199,30 @@ __weak MyBaseLayout * _currentLayout;
     
     
     if (_layout.highlightedBackgroundImage != nil)
+    {
+        _layout.backgroundImage = _oldBackgroundImage;
+        _oldBackgroundImage = nil;
+    }
+    
+}
+
+//恢复非高亮。
+-(void)recoverNormalAppearance
+{
+    if (_oldAlpha != 0)
+    {
+        _layout.alpha = _oldAlpha;
+        _oldAlpha = 1;
+    }
+    
+    if (_oldBackgroundColor != nil)
+    {
+        _layout.backgroundColor = _oldBackgroundColor;
+        _oldBackgroundColor = nil;
+    }
+    
+    
+    if (_oldBackgroundImage != nil)
     {
         _layout.backgroundImage = _oldBackgroundImage;
         _oldBackgroundImage = nil;
