@@ -51,6 +51,7 @@
 -(void)setTouchDownTarget:(id)target action:(SEL)action;
 -(void)setTouchCancelTarget:(id)target action:(SEL)action;
 
+- (void)recoverNormalAppearance;
 @end
 
 
