@@ -237,7 +237,7 @@ CGFloat _myMLayoutSizeError = 0.0;
 {
     return self.myCurrentSizeClass.myHeight;
 }
-
+ 
 -(void)setMyHeight:(CGFloat)myHeight
 {
     self.myCurrentSizeClass.myHeight = myHeight;
